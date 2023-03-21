@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>페이지 요청하기</h3>
+    <hr>
+    <button id="btnGetList">가져오기</button>
+    <a href="/WebBasic/SimpleHtmlGetListServlet">Link 로 가져오기</a>
+    <script>
+        window.onload = function(){
+            let btnGetList  = document.querySelector("#btnGetList");
+            btnGetList.onclick = function(){
+                // GET 방식으로 HTML 로 List 를 보내는 Servlet 에 요청
+                window.location.href = "/WebBasic/SimpleHtmlGetListServlet";
+            }
+        }
+    </script>
+</body>
+</html>

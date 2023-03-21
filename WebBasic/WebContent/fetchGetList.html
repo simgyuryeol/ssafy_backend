@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h3>비동기 fetch 요청하기</h3>
+    <div id="receivedData"></div>
+    <hr>
+    <button id="btnGetList">가져오기</button>
+    <script>
+        window.onload = function(){
+            let btnGetList  = document.querySelector("#btnGetList");
+            btnGetList.onclick = async function(){
+                // fetch
+                let response = await fetch("/WebBasic/SimpleFetchGetListServlet");
+                console.log( response );
+                // fetch 의 결과 object 로부터 백엔드에서 보낸 json 문자열을 javascript object 로 변환
+                let userList = await response.json(); 
+                console.log( userList );
+
+                let userHtml = ``;
+                userList.forEach( user => {
+                    userHtml += `<div><span>${user.userSeq}</span><span>${user.userName}</span><span>${user.userEmail}</span></div>`
+                });
+
+                document.querySelector("#receivedData").innerHTML = userHtml;
+            }
+        }
+    </script>
+</body>
+</html>
